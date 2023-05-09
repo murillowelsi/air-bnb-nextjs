@@ -18,8 +18,10 @@ import Modal from './Modal'
 
 const LoginModal = () => {
   const router = useRouter()
+
   const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
+
   const [isLoading, setIsLoading] = useState(false)
 
   const {

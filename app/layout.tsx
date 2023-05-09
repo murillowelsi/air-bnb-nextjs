@@ -3,6 +3,7 @@ import { getCurrentUser } from './actions/getCurrentUser'
 import ClientOnly from './components/ClientOnly'
 import LoginModal from './components/modals/LoginModal'
 import RegisterModal from './components/modals/RegisterModal'
+import RentModal from './components/modals/RentModal'
 import NavBar from './components/navbar/NavBar'
 import './globals.css'
 import ToasterProvider from './providers/ToasterProvider'
@@ -26,6 +27,7 @@ export default async function RootLayout({
       <body className={nunito.className}>
         <ClientOnly>
           <ToasterProvider />
+          <RentModal />
           <LoginModal />
           <RegisterModal />
           <NavBar currentUser={currentUser} />
