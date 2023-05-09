@@ -1,6 +1,7 @@
 'use client'
 
 import useLoginModal from '@/app/hooks/useLoginModal'
+import useRentModal from '@/app/hooks/useRentModal'
 import { SafeUser } from '@/app/types'
 import { signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -20,6 +21,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   const loginModal = useLoginModal()
   const registerModal = useRegisterModal()
+  const rentModal = useRentModal()
 
   const [isOpen, setIsOpen] = useState(false)
 
@@ -31,13 +33,15 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
     if (!currentUser) {
       return loginModal.onOpen()
     }
-  }, [loginModal, currentUser])
+
+    return rentModal.onOpen()
+  }, [currentUser, rentModal, loginModal])
 
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
-          onClick={() => {}}
+          onClick={onRent}
           className="
             hidden
             cursor-pointer
@@ -99,7 +103,7 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
                 <MenuItem label="My favorites" onClick={() => {}} />
                 <MenuItem label="My reservations" onClick={() => {}} />
                 <MenuItem label="My properties" onClick={() => {}} />
-                <MenuItem label="Airbnb your home" onClick={() => {}} />
+                <MenuItem label="Airbnb your home" onClick={onRent} />
                 <hr />
                 <MenuItem
                   label="Logout"
