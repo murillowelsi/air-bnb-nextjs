@@ -1,5 +1,5 @@
 import { Nunito } from 'next/font/google'
-import { getCurrentUser } from './actions/getCurrentUser'
+import getCurrentUser from './actions/getCurrentUser'
 import ClientOnly from './components/ClientOnly'
 import LoginModal from './components/modals/LoginModal'
 import RegisterModal from './components/modals/RegisterModal'
